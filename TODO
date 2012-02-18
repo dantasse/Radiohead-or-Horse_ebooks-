@@ -1,0 +1,7 @@
+- pick a backend framework
+- decide whether to just use form submits or RPCs to record your guess
+- keep a record of your guess after you guess it
+- display whether you're right or wrong
+- load a radiohead lyric on demand (songmeanings.net?)
+- load a horse_ebooks tweet on demand
+
