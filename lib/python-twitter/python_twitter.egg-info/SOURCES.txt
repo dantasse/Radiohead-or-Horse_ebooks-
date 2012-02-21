@@ -5,6 +5,7 @@ MANIFEST.in
 NOTICE
 README
 get_access_token.py
+setup.cfg
 setup.py
 t.py
 twitter.py
