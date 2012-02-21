@@ -1,12 +1,13 @@
 
 radiohead_quotes = [
-  "In an interstellar burst, I'm back to save the universe",
-  "A pig in a cage on antibiotics",
-  "Ice age coming, women and children first"
+  "Don't talk politics and don't throw stones Your royal highnesses",
+  "It's not like the movies They fed us on little white lies",
+  "Clothes are on the lawn with the furniture",
   ]
 horse_ebooks_quotes = [
-  "horse ebooks quote 1",
-  "horse ebooks quote 2"
+  "Your computer and your golf clubs are your best friends.",
+  "Well imagine how it s going to feel when the next guy who comes along starts smack talking you, and then you utterly destroy",
+  "walk into your house and see a new chair",
   ]
 
 function get_quote() {
