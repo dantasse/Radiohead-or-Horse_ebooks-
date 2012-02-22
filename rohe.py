@@ -21,17 +21,23 @@ import random
 import logging
 
 class MainPage(webapp.RequestHandler):
-    def get(self):
+    def get(self, correct=None):
         # http://code.google.com/p/python-twitter/issues/detail?id=59
 #        api = twitter.Api(cache=None)
 #        statuses = api.GetUserTimeline('Horse_ebooks')
 
+        message = ''
+        if correct == False:
+            message = 'Not correct'
+        elif correct == True:
+            message = 'Correct' 
         # Get a random quote. If the number of quotes gets large, this
         # might get slow.
         num_quotes = Quote.all(keys_only=True).count()
         offset = random.randrange(num_quotes)
         quote = Quote.all().fetch(1, offset)[0]
         template_values = {
+            'message': message,
             'quote': quote.text,
             'quote_id': quote.key().id()
         }
@@ -49,11 +55,9 @@ class MainPage(webapp.RequestHandler):
         guess.put()
 
         if (quote.is_radiohead == guessed_radiohead):
-            logging.info('guessed right')
+            self.get(correct=True)
         else:
-            logging.info('guessed wrong')
-
-        self.get()
+            self.get(correct=False)
 
 application = webapp.WSGIApplication(
                                      [('/', MainPage)],

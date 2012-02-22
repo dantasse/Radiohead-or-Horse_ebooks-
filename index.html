@@ -4,6 +4,9 @@
     <link type="text/css" rel="stylesheet" href="css/main.css" />
   </head>
   <body>
+    {% if message %}
+      {{message}}<br>
+    {% endif %}
     Radiohead lyric or Horse_ebooks tweet?<br>
     {{quote}}
     <form action="/" method="post">
