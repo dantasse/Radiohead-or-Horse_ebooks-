@@ -16,6 +16,7 @@ from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import run_wsgi_app
 import twitter
 from model import Quote
+from model import Guess
 import random
 import logging
 
@@ -31,19 +32,28 @@ class MainPage(webapp.RequestHandler):
         offset = random.randrange(num_quotes)
         quote = Quote.all().fetch(1, offset)[0]
         template_values = {
-            'quote' : quote.text
+            'quote': quote.text,
+            'quote_id': quote.key().id()
         }
         path = os.path.join(os.path.dirname(__file__), 'index.html')
         self.response.out.write(template.render(path, template_values))
  
-        # q1 = model.Quote()
-        # q1.text = "Radiohead Quote 1"
-        # q1.isRadiohead = True
-        # q1.put() 
-        # g1 = model.Guess()
-        # g1.quoteId = q1
-        # g1.guessedRadiohead = False
-        # g1.put()
+    def post(self):
+        quote_id = self.request.get('quote_id')
+        quote = Quote.get_by_id(int(quote_id))
+        guessed_radiohead = bool(self.request.get('radiohead'))
+
+        guess = Guess()
+        guess.quote = quote
+        guess.guessed_radiohead = guessed_radiohead
+        guess.put()
+
+        if (quote.is_radiohead == guessed_radiohead):
+            logging.info('guessed right')
+        else:
+            logging.info('guessed wrong')
+
+        self.get()
 
 application = webapp.WSGIApplication(
                                      [('/', MainPage)],

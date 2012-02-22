@@ -6,9 +6,10 @@
   <body>
     Radiohead lyric or Horse_ebooks tweet?<br>
     {{quote}}
-    <form>
-      <input type="submit" id="Radiohead" value="Radiohead"></input>
-      <input type="submit" id="Horse_ebooks" value="Horse_ebooks"></input>
+    <form action="/" method="post">
+      <input type="hidden" name="quote_id" value={{quote_id}}></input>
+      <input type="submit" name="radiohead" value="Radiohead"></input>
+      <input type="submit" name="horse_ebooks" value="Horse_ebooks"></input>
     </form>
   </body>
 </html>
