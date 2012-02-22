@@ -59,8 +59,13 @@ class MainPage(webapp.RequestHandler):
         else:
             self.get(correct=False)
 
-application = webapp.WSGIApplication(
-                                     [('/', MainPage)],
+class GetMoreQuotes(webapp.RequestHandler):
+    def get(self):
+        logging.info('Getting more quotes now')
+        self.response.out.write('Got more quotes.')
+
+application = webapp.WSGIApplication([('/', MainPage),
+                                      ('/get_more_quotes', GetMoreQuotes)],
                                      debug=True)
 
 def main():

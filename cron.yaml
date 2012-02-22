@@ -1,0 +1,4 @@
+cron:
+- description: Get new Horse_ebooks tweets and Radiohead lyrics
+  url: /get_more_quotes
+  schedule: every 24 hours

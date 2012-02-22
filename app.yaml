@@ -10,5 +10,9 @@ handlers:
 - url: /js
   static_dir: js
 
+- url: /get_more_quotes
+  script: rohe.py
+  login: admin
+
 - url: /.*
   script: rohe.py
