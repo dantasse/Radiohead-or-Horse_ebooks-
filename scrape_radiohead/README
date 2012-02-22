@@ -1,0 +1,6 @@
+Hopefully gets the lyrics of all the Radiohead songs.
+Thanks to Green Plastic Radiohead for hosting them.
+To use: run pipeline.sh.
+Sends 1 request/second to Green Plastic Radiohead, so I guess don't run it
+all the time?
+
