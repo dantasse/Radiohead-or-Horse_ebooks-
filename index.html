@@ -5,16 +5,11 @@
   </head>
   <body>
     Radiohead lyric or Horse_ebooks tweet?<br>
-    <script>
-      document.write(get_quote());
-    </script>
+    {{quote}}
     <form>
       <input type="submit" id="Radiohead" value="Radiohead"></input>
       <input type="submit" id="Horse_ebooks" value="Horse_ebooks"></input>
     </form>
-    {% for tweet in tweets %}
-      {{tweet}}<br>
-    {% endfor %}
   </body>
 </html>
 
