@@ -22,9 +22,6 @@ import logging
 
 class MainPage(webapp.RequestHandler):
     def get(self, correct=None):
-        # http://code.google.com/p/python-twitter/issues/detail?id=59
-#        api = twitter.Api(cache=None)
-#        statuses = api.GetUserTimeline('Horse_ebooks')
 
         message = ''
         if correct == False:
@@ -61,7 +58,18 @@ class MainPage(webapp.RequestHandler):
 
 class GetMoreQuotes(webapp.RequestHandler):
     def get(self):
-        logging.info('Getting more quotes now')
+        # http://code.google.com/p/python-twitter/issues/detail?id=59
+        api = twitter.Api(cache=None)
+        countstr = self.request.get('count')
+        count = int(countstr) if countstr else 5
+ 
+        statuses = api.GetUserTimeline('Horse_ebooks', count=count)
+
+        for status in statuses:
+            
+            logging.info('here is one: ' + status.text)
+            
+        logging.info('Getting more quotes now. This many: ' + str(count))
         self.response.out.write('Got more quotes.')
 
 application = webapp.WSGIApplication([('/', MainPage),
