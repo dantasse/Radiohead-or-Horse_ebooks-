@@ -19,6 +19,7 @@ from model import Quote
 from model import Guess
 import random
 import logging
+import re
 
 class MainPage(webapp.RequestHandler):
     def get(self, correct=None):
@@ -58,19 +59,58 @@ class MainPage(webapp.RequestHandler):
 
 class GetMoreQuotes(webapp.RequestHandler):
     def get(self):
-        # http://code.google.com/p/python-twitter/issues/detail?id=59
+        # cache: http://code.google.com/p/python-twitter/issues/detail?id=59
         api = twitter.Api(cache=None)
-        countstr = self.request.get('count')
+        countstr = self.request.get('num_quotes')
         count = int(countstr) if countstr else 5
  
         statuses = api.GetUserTimeline('Horse_ebooks', count=count)
 
+        num_successful_quotes = 0
+        lyrics_string = open('scrape_radiohead/all_lyrics.txt').read()
+        all_radiohead_lyrics = re.split('\s+', lyrics_string)
         for status in statuses:
-            
-            logging.info('here is one: ' + status.text)
-            
-        logging.info('Getting more quotes now. This many: ' + str(count))
-        self.response.out.write('Got more quotes.')
+            # clean up each Horse_ebooks tweet
+            horse_text = status.text
+            # strip out URLs
+            horse_text = re.sub('http://\S*', '', horse_text)
+            horse_text = re.sub('\n', '', horse_text)
+            horse_words = re.split('\s+', horse_text)
+
+            # add it to the datastore 
+            horse_quote = Quote()
+            horse_quote.text = horse_text
+            horse_quote.is_radiohead = False
+            horse_quote.put()
+
+            # also add a snippet of Radiohead lyrics of the same size
+            # sometimes adds an extra one if the text ends in whitespace
+            # don't really care to figure out why
+            num_words = len(horse_words)
+            start_index = random.randrange(len(all_radiohead_lyrics) - num_words)
+            radiohead_words = all_radiohead_lyrics[start_index:start_index + num_words]
+            # make capitalization same as the Horse_ebooks tweet
+            for i in range(len(horse_words)):
+                if horse_words[i].isupper():
+                    radiohead_words[i] = radiohead_words[i].upper()
+                elif horse_words[i].istitle():
+                    radiohead_words[i] = radiohead_words[i].title()
+ 
+            radiohead_text = ' '.join(radiohead_words)
+
+            # save the radiohead quote to the datastore
+            radiohead_quote = Quote()
+            radiohead_quote.text = radiohead_text
+            radiohead_quote.is_radiohead = True
+            radiohead_quote.put()
+
+            logging.info('adding this horse_ebooks tweet: ' + horse_text)
+            logging.info('adding this corresponding radiohead: ' + radiohead_text)
+            num_successful_quotes += 1
+ 
+        self.response.out.write(\
+            'Got more quotes. This many: ' + str(num_successful_quotes))
+        logging.info('Added this many quotes each: ' + str(num_successful_quotes))
 
 application = webapp.WSGIApplication([('/', MainPage),
                                       ('/get_more_quotes', GetMoreQuotes)],
