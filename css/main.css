@@ -1,5 +1,5 @@
 body {
-  font-family: 'Orbitron', Helvetica, sans-serif;
+  font-family: 'Krona One', Helvetica, sans-serif;
   font-size:1.5em;
   color:#0C0;
   background-color: #111;
@@ -15,7 +15,7 @@ body {
 
 .quote {
   text-align:center;
-  font-size:2em;
+  font-size:1.5em;
   margin:1em;
 }
 
