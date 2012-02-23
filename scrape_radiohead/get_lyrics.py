@@ -19,10 +19,18 @@ for url in open('urls.txt'):
     lyrics = re.sub('<.*?>', '', html)
     # a little cleanup
     lyrics = re.sub('&nbsp;', '', lyrics)
+    lyrics = re.sub('&amp;', '&', lyrics)
     lyrics = re.sub('&#8217;', '\'', lyrics)
     lyrics = re.sub('&#8230;', '...', lyrics)
     lyrics = re.sub('&#8221;', '"', lyrics)
     lyrics = re.sub('&#8220;', '"', lyrics)
+    lyrics = re.sub('&#8216;', '\'', lyrics)
+    #8212 is a line of some kind; just punctuation, don't need it
+    lyrics = re.sub('&#8212;', '', lyrics)
+    #8211, the might em dash
+    lyrics = re.sub('&#8211;', '-', lyrics)
+    lyrics = re.sub('’', '\'', lyrics)
+    
     outfile.write(lyrics)
 
     # don't want to wallop Green Plastic Radiohead
