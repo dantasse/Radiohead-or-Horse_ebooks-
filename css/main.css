@@ -1,4 +1,40 @@
 body {
-  font-family: Verdana, Helvetica, sans-serif;
-  background-color: #DDDDDD;
+  font-family: 'Orbitron', Helvetica, sans-serif;
+  background-color: #111;
+}
+
+.title {
+  color:#0C0;
+  font-size:1.25em;
+}
+.what {
+  color:#0C0;
+  float:right;
+  font-size:0.75em;
+}
+
+.quote {
+  text-align:center;
+  color:#0C0;
+  font-size:2em;
+  margin:1em;
+}
+
+.buttons {
+  text-align:center;
+  color:#111;
+}
+
+.radiohead_button {
+  height:109px;
+  width:109px;
+  margin-left:10px;
+  margin-right:10px;
+}
+
+.horse_ebooks_button {
+  height:109px;
+  width:109px;
+  margin-left:10px;
+  margin-right:10px;
 }

@@ -1,18 +1,34 @@
+<!DOCTYPE html>
 <html>
   <head>
     <script type="text/javascript" src="js/main.js"></script>
+    <link href="http://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet" type="text/css">
     <link type="text/css" rel="stylesheet" href="css/main.css" />
+    <title>Radiohead or Horse_ebooks</title>
   </head>
   <body>
     {% if message %}
-      {{message}}<br>
+      <div class="message">{{message}}</div>
     {% endif %}
-    Radiohead lyric or Horse_ebooks tweet?<br>
-    {{quote}}
+    <div class="what"><a href="what.html">what</a></div>
+    <div class="title">Radiohead or Horse_ebooks?</div>
+    <div class="quote">{{quote}}</div>
     <form action="/" method="post">
       <input type="hidden" name="quote_id" value={{quote_id}}></input>
-      <input type="submit" name="radiohead" value="Radiohead"></input>
-      <input type="submit" name="horse_ebooks" value="Horse_ebooks"></input>
+      <div class="buttons">
+        <!-- <div style="display:inline-block" > -->
+        <!-- <button type="submit" name="radiohead" class="radiohead_button" value=""><img src="images/radiohead.jpg" alt="Radiohead"></img></button> -->
+        <input type="image" name="radiohead" class="radiohead_button"
+               value="radiohead" src="images/radiohead.jpg" alt="Radiohead"></input>
+        <!--   <br>Radiohead -->
+        <!-- </div> -->
+        <!-- <div style="display:inline-block" > -->
+        <input type="image" name="horse_ebooks" class="horse_ebooks_button"
+               value="horse_ebooks" src="images/horse_ebooks.jpg" alt="Horse_ebooks"></input>
+        <!-- <input type="image" name="horse_ebooks" class="horse_ebooks_button" value="" src="images/horse_ebooks.jpg" alt="Horse_ebooks"></input> -->
+        <!--   <br>Horse_ebooks -->
+        <!-- </div> -->
+      </div>
     </form>
   </body>
 </html>
