@@ -32,7 +32,9 @@ for url in open('urls.txt'):
     #8211, the might em dash
     lyrics = re.sub('&#8211;', '-', lyrics)
     lyrics = re.sub('’', '\'', lyrics)
-    
+    # non breaking space, unicode 0xc2 0xa0
+    lyrics = lyrics.replace('\xc2\xa0', ' ')
+
     outfile.write(lyrics)
 
     # don't want to wallop Green Plastic Radiohead

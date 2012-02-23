@@ -79,6 +79,8 @@ class GetMoreQuotes(webapp.RequestHandler):
             horse_text = re.sub('http://\S*', '', horse_text)
             horse_text = re.sub('\n', '', horse_text)
             horse_words = re.split('\s+', horse_text)
+            if len(horse_words) < 3:
+                continue
 
             # add it to the datastore 
             horse_quote = Quote()
