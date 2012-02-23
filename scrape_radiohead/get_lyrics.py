@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# coding: utf-8
 
 import urllib2
 import re
@@ -15,6 +16,7 @@ for url in open('urls.txt'):
     # comes soon after, so chop off everything before/after that
     html = re.sub('.*google_ad_section_start -->(.*)SONG INFORMATION.*', '\\1',\
            html, flags=re.DOTALL)
+
     # strip out all html tags, we just want the text
     lyrics = re.sub('<.*?>', '', html)
     # a little cleanup
