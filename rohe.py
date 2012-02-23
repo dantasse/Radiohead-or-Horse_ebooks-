@@ -9,6 +9,9 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "lib/"))
 sys.path.append(os.path.join(os.path.dirname(__file__), "lib/python-oauth2"))
 sys.path.append(os.path.join(os.path.dirname(__file__), "lib/python-twitter"))
 sys.path.append(os.path.join(os.path.dirname(__file__), "lib/httplib2"))
+sys.path.append(os.path.join(os.path.dirname(__file__), "lib/httplib2/python2/"))
+sys.path.append(os.path.join(os.path.dirname(__file__), "lib/httplib2/python2/httplib2"))
+sys.path.append(os.path.join(os.path.dirname(__file__), "lib/httplib2/build/lib.linux-i686-2.7/httplib2"))
 sys.path.append(os.path.join(os.path.dirname(__file__), "lib/simplejson"))
 
 from google.appengine.ext import webapp
