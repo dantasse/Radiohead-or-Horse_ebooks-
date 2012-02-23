@@ -13,6 +13,10 @@ handlers:
 - url: /js
   static_dir: js
 
+- url: /what.html
+  static_files: what.html
+  upload: what.html
+
 - url: /get_more_quotes
   script: rohe.py
   login: admin

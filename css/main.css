@@ -1,28 +1,26 @@
 body {
   font-family: 'Orbitron', Helvetica, sans-serif;
+  font-size:1.5em;
+  color:#0C0;
   background-color: #111;
 }
 
 .title {
-  color:#0C0;
   font-size:1.25em;
 }
 .what {
-  color:#0C0;
   float:right;
   font-size:0.75em;
 }
 
 .quote {
   text-align:center;
-  color:#0C0;
   font-size:2em;
   margin:1em;
 }
 
 .buttons {
   text-align:center;
-  color:#111;
 }
 
 .radiohead_button {
@@ -37,4 +35,9 @@ body {
   width:109px;
   margin-left:10px;
   margin-right:10px;
+}
+
+.thanks {
+  font-size:0.75em;
+  margin-top:1em;
 }

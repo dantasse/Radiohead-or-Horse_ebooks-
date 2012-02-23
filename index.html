@@ -7,27 +7,20 @@
     <title>Radiohead or Horse_ebooks</title>
   </head>
   <body>
-    {% if message %}
-      <div class="message">{{message}}</div>
-    {% endif %}
     <div class="what"><a href="what.html">what</a></div>
-    <div class="title">Radiohead or Horse_ebooks?</div>
+    {% if message %}
+      <div class="title">{{message}}</div>
+    {% else %}
+      <div class="title">Radiohead or Horse_ebooks?</div>
+    {% endif %}
     <div class="quote">{{quote}}</div>
     <form action="/" method="post">
       <input type="hidden" name="quote_id" value={{quote_id}}></input>
       <div class="buttons">
-        <!-- <div style="display:inline-block" > -->
-        <!-- <button type="submit" name="radiohead" class="radiohead_button" value=""><img src="images/radiohead.jpg" alt="Radiohead"></img></button> -->
         <input type="image" name="radiohead" class="radiohead_button"
                value="radiohead" src="images/radiohead.jpg" alt="Radiohead"></input>
-        <!--   <br>Radiohead -->
-        <!-- </div> -->
-        <!-- <div style="display:inline-block" > -->
         <input type="image" name="horse_ebooks" class="horse_ebooks_button"
                value="horse_ebooks" src="images/horse_ebooks.jpg" alt="Horse_ebooks"></input>
-        <!-- <input type="image" name="horse_ebooks" class="horse_ebooks_button" value="" src="images/horse_ebooks.jpg" alt="Horse_ebooks"></input> -->
-        <!--   <br>Horse_ebooks -->
-        <!-- </div> -->
       </div>
     </form>
   </body>

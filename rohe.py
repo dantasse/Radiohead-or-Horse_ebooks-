@@ -26,9 +26,9 @@ class MainPage(webapp.RequestHandler):
 
         message = ''
         if correct == False:
-            message = 'Not correct'
+            message = 'No I am afraid that is not correct'
         elif correct == True:
-            message = 'Correct' 
+            message = 'Yes indeed that is correct'
         # Get a random quote. If the number of quotes gets large, this
         # might get slow.
         num_quotes = Quote.all(keys_only=True).count()
