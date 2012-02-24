@@ -17,6 +17,10 @@ handlers:
   static_files: what.html
   upload: what.html
 
+- url: /favicon.ico
+  static_files: images/favicon.ico
+  upload: images/favicon.ico
+
 - url: /get_more_quotes
   script: rohe.py
   login: admin
