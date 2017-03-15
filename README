@@ -2,3 +2,7 @@ A website that presents a quote and asks if it's a Radiohead lyric or if it's
 a Horse_ebooks tweet. Live on app engine probably at:
 http://radiohead-or-horse-ebooks.appspot.com
 (cron job currently not running, to tie up loose ends)
+
+To deploy:
+install all this stuff: https://cloud.google.com/sdk/docs/
+gcloud app deploy --project=radiohead-or-horse-ebooks
