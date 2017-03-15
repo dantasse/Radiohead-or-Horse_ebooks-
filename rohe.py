@@ -117,12 +117,13 @@ class GetMoreQuotes(webapp.RequestHandler):
             'Got more quotes. This many: ' + str(num_successful_quotes))
         logging.info('Added this many quotes each: ' + str(num_successful_quotes))
 
-application = webapp.WSGIApplication([('/', MainPage),
-                                      ('/get_more_quotes', GetMoreQuotes)],
-                                     debug=True)
+application = webapp2.WSGIApplication([('/', MainPage),
+                                      ('/get_more_quotes', GetMoreQuotes)])
 
-def main():
-    run_wsgi_app(application)
-
-if __name__ == "__main__":
-    main()
+# Not needed anymore in python 2.7?
+# https://cloud.google.com/appengine/docs/standard/python/python25/migrate27
+# def main():
+#     run_wsgi_app(application)
+# 
+# if __name__ == "__main__":
+#     main()
